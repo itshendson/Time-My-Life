@@ -1,0 +1,89 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// The idea was to click a createTimer() button and for it to do a few things:
+// 1. Create an Id
+// 2. Create the Timer's DOM elements
+// 3. Instantiate a new Timer object
+// 4. Link the Timer's DOM elements with the Timer's object using the ID
+// 
+// I tried to implement a class based object design here because I wanted to store certain things in each timer like seconds, minutes, hours, ID, etc.
+// 
+// 
+// The problem with this code is that it can be simplified dramatically using the class based object in ES6.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const addButton = document.querySelector('.add-button')!;
+addButton.addEventListener('click', createTimer);
+document.addEventListener('click', startTimer);
+
+var timers: Timer[] = []
+
+function createTimer() {
+    // Create a new Id and instantiate new Timer object
+    const id = document.getElementsByClassName('timer').length || 0;
+    const nextId = (id + 1).toString();
+    var timer = new Timer(nextId);
+    timers.push(timer);
+    
+    // Create the elements of a timer
+    const timerContainer = document.createElement('div');
+    const timerHeader = document.createElement('h1');
+    const timerDiv = document.createElement('div');
+    const startBtn = document.createElement('button');    
+
+    // Fill in the default text of the above elements
+    timerHeader.textContent = 'Timer';
+    timerDiv.textContent = '00:00:00';
+    startBtn.innerText = 'click me'
+
+    // Link timer element with Timer object using the same Id
+    timerDiv.id = `timer${nextId}`;
+    timerDiv.className = 'timer';
+
+    // Append elements to parents
+    timerContainer.appendChild(timerHeader);
+    timerContainer.appendChild(timerDiv);
+    timerContainer.appendChild(startBtn);
+
+    document.body.appendChild(timerContainer);
+}
+
+function startTimer() {
+    // How do I get the function to execute tick() and know what 'this' is supposed to be?
+}
+
+
+
+Class based objects ES6
+class Timer {
+    seconds: number;
+    minutes: number;
+    hours: number;
+    id: string;
+
+    constructor(id: string) {
+        this.seconds = 0;
+        this.minutes = 0;
+        this.hours = 0;
+        this.id = id;
+    }
+
+    tick() {
+        setInterval(() => {
+            this.seconds++;
+            const timerId = `timer${this.id}`;
+            const timerDisplay = document.getElementById(timerId)!;
+            timerDisplay.textContent = this.seconds.toString();
+        }, 1000)
+    }
+}
+
+//Different approach to executing tick
+function tick(timer: Timer) {
+    setInterval(() => {
+        timer.seconds += 1;
+        const timerId = `timer${timer.id}`;
+        const timerDisplay = document.getElementById(timerId)!;
+        timerDisplay.textContent = timer.seconds.toString();
+    }, 1000)
+}
+

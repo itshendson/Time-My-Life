@@ -1,0 +1,55 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Deleted this file after realizing there was a slow but gradual time drift.
+// The time drift is caused by the nature of Javascript. Specifically, the time drift is because Javascript is a single-threaded programming language. Anytime code runs,
+// your setTimeout() thread is stopped so that other code can execute on the thread. This causes a gradual time drift and causes your stopwatch to be out of sync with actual time.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+const time = document.getElementById('time')!;
+const timerButton = document.querySelector('.timer-button')!;
+
+timerButton.addEventListener('click', toggleTimerButton);
+
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let running = false;
+
+//Toggles timer on/off
+function toggleTimerButton() {
+    if (running) {
+        running = !running;
+    } else {
+        running = true;
+        tick();
+    }
+}
+
+function tick() {
+    setTimeout(() => tock(), 1000)
+}
+
+function tock() {
+    if (running) {
+        seconds++;
+
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+        }
+
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+
+        draw();
+        if (running) tick();
+
+    } else return;
+}
+
+function draw() {
+    time.textContent = `${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
+}
+

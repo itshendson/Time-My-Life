@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time My Life</title>
+    <script src="./dist/app.js" defer></script>
+    <script src="./dist/modal.js" defer></script>
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/buttons.css">
+    <link rel="stylesheet" href="./src/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+    <div id="everything-container" class="container">
+        <div id="create-timer-container" class="container">
+            <button class="icon-button"><i class="fas fa-portrait fa-5x"></i></button>
+            <input id="create-timer-input" placeholder="What activity do you want to track?" maxlength="25"/>
+            <button id="create-timer-button" type="submit"><i class="fas fa-plus fa-2x"></i></button>
+            <button id="info-button" class="generic-button"><i class="fas fa-info fa-2x"></i></button>
+        </div>
+
+        <!-- Example of what a Timer looks like:
+        <div class="timer-div">
+            <button class="icon-button"><i class="fas fa-portrait fa-5x"></i></button>
+            <h1 class="timer-activity-header">Activity Name</h1>
+            <h2 class="timer-display">00:00:00</h3>
+            <button class="timer-button generic-button"><i class="fas fa-stopwatch fa-5x"></i></button>
+            <button class="delete-button generic-button"><i class="fas fa-trash"></i></button>
+        </div> -->
+    </div>
+
+    <div class="modal active" id="info-modal">
+        <div class="modal-header">
+            Time My Life
+        </div>
+
+        <div class="modal-body">
+            <ol>
+                <li>Write a short description of what activity you want to track.</li>
+                <li>Click the create button (the plus symbol). A timer will be created</li>
+                <li>Now, click the timer button before you begin an activity. Click it again to pause.</li>
+                <li>When you return to an activity, click on the timer button again to start tracking.</li>
+            </p>
+        </div>
+    </div>
+
+    <!-- Example of what a Edit Modal looks like:
+    <div class="modal">
+        <input id="rename-input" placeholder="Name of your activity" maxlength="25"/>
+        <button id="rename-button" type="submit"></button>
+    </div> -->
+
+    <div id="overlay" class="active" />
+</body>
+</html>

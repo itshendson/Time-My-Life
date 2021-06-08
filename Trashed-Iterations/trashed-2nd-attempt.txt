@@ -1,0 +1,11 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// I made a very quick prototype after learning about Date() and how it had the promise of me setting correct times without the use of setInterval and setTimeout. It worked in the sense that it didn't cause a time drift. 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+var start = Date.now();
+setInterval(function() {
+    var delta = Date.now() - start; // milliseconds elapsed since start
+    console.log((Math.floor(delta / 1000))); // in seconds
+    output(new Date().toUTCString());
+}, 1000); // update about every second

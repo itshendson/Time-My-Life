@@ -1,0 +1,87 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// This iteration eventually led me to my final results. I was still thinking that I would use Date() to get the number of milliseconds that has passed so that I can store it in seconds, minutes, and hours. Storing it that way allowed for a very natural
+// way to start/pause the timer which I was a fan of. 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const createTimerBtn = document.getElementById('create-timer-button')!;
+
+const everythingContainer = document.getElementById('everything-container')!;
+
+createTimerBtn.addEventListener('click', createTimer)
+
+let counter: number = 0;
+
+class Timer {
+    seconds: number;
+    minutes: number;
+    hours: number;  
+    id: number;
+    isFirstRun: boolean;
+    isTicking: boolean;
+    startTime: number;
+    timerButton: HTMLButtonElement;
+    timerDiv: HTMLDivElement;
+    timerDisplay: HTMLHeadingElement;
+
+    constructor(id: number, parent: HTMLElement) {
+        this.seconds = 0;
+        this.minutes = 0;
+        this.hours = 0;
+        this.isFirstRun = true;
+        this.id = id;
+        this.startTime = 0;
+        this.isTicking = false;
+        
+        this.timerButton = document.createElement("button");
+        this.timerButton.classList.add("timer-button", "generic-button") // I added this
+        this.timerButton.innerHTML = '<i class="fas fa-stopwatch fa-5x"></i>'; // "show id"
+        this.timerButton.addEventListener('click', () => this.toggleTimer());
+        
+        // Create element for timer-div
+        this.timerDiv = document.createElement("div");
+        this.timerDiv.classList.add("container");
+
+        // Create element for timer-display
+        this.timerDisplay = document.createElement("h2");
+        this.timerDisplay.classList.add("timer-display");
+        this.timerDisplay.innerHTML = "00:00:00"
+
+        // Append elements
+        parent.appendChild(this.timerDiv);
+        this.timerDiv.appendChild(this.timerButton);
+        this.timerDiv.appendChild(this.timerDisplay);
+    }
+
+    toggleTimer() {
+
+        if (this.isTicking) {
+            this.isTicking = false;
+        } else {
+            this.isTicking = true;
+            //this.startTime = Date.now();
+            this.tick();
+        }
+    }
+
+    tick() {
+        if (this.isTicking) {
+
+            setTimeout(() => {
+
+                let elapsedTime = Date.now() - this.startTime; //amount of time that has passed in milliseconds
+                let dateObj = new Date(elapsedTime); //cast to Date object
+
+                this.timerDisplay.textContent = this.seconds.toString();
+
+                if (this.isTicking) this.tick();
+            }, 1000);
+
+        } else return
+    }
+
+}
+
+function createTimer() {
+    new Timer(counter, everythingContainer); //document.body
+    counter++;
+}

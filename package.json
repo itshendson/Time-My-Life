@@ -1,0 +1,16 @@
+{
+  "name": "time_my_life",
+  "version": "1.0.0",
+  "description": "an app to time your life",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Hendson Szeto",
+  "license": "ISC",
+  "keywords": []
+}
