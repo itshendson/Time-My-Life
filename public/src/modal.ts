@@ -21,3 +21,4 @@ function closeInfoModal() {
     overlay.classList.remove('active');
 }
 
+export {}; // Need this line to stop TypeScript error
