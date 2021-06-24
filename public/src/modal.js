@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var infoButton = document.getElementById('info-button');
 var infoModal = document.getElementById('info-modal');
 var overlay = document.getElementById('overlay');
