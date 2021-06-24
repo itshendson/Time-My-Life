@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #a5a89f;
+}
+
 .container {
     border: 3px solid black;
     border-radius: 25px;
@@ -16,17 +20,18 @@
     min-height: 300px;
     position: relative;
     top: 75px;
-    /* transform: translateY(50%); */
     width: 800px;
 }
 
 #create-timer-container {
+    background-color: bisque;
     display: flex;
     height: 100px;
     position: relative;
 }
 
 #create-timer-input {
+    background-color: white;
     border-radius: 25px;
     height: 30px;
     left: 200px;
@@ -47,6 +52,7 @@
 }
 
 .timer-activity-header {
+    background-color: bisque;
     font-size: x-large;
     font-weight: bolder;
     left: 5%;
@@ -57,6 +63,7 @@
 }
 
 .timer-display {
+    background-color: bisque;
     display: inline;
     font-size: 40px;
     left: 5%;

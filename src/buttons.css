@@ -62,6 +62,7 @@
 }
 
 .timer-button {
+    background-color: bisque;
     left: 550px;
     outline: none;
     position: absolute;
@@ -93,12 +94,14 @@
 }
 
 .edit-button {
+    background-color: bisque;
     position: absolute;
     left: 710px;
     top: 25px;
 }
 
 .edit-button:hover {
+    background-color: bisque;
     cursor: pointer;
     position: absolute;
     left: 710px;
