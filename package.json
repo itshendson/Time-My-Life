@@ -1,13 +1,14 @@
 {
   "name": "time_my_life",
   "version": "1.0.0",
-  "description": "an app to time your life",
+  "description": "An app to time your life",
   "main": "index.js",
   "dependencies": {
     "jest": "^26.6.3"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node dist/app.js",
     "test": "test"
   },
   "author": "Hendson Szeto",
